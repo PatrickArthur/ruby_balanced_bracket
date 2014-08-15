@@ -1,14 +1,28 @@
 def valid_brac?(str)
   stack = []
+  count=[]
+  y=0
   symbols = { '{' => '}', '[' => ']', '(' => ')' }
   str.each_char do |x|
     stack << x if symbols.key?(x)
-    return false if symbols.key(x) && symbols.key(x) != stack.pop
+    count << x if symbols.key?(x)
+    if symbols.key(x) && symbols.key(x) != stack.pop
+      y=0
+      puts 0
+    else
+      y=1
+    end
   end
-  stack.empty?
+  if y == 1
+      puts 1
+      puts count.length
+    end
 end
 
-puts valid_brac?('[ ]')                  # returns true
-puts valid_brac?('[  ')                  # returns false
-puts valid_brac?('[ ( text ) {} ]')      # returns true
-puts valid_brac?('[ ( text { ) } ]')     # returns false
+
+valid_brac?("(hello [world]) (!)")
+
+
+
+
+
